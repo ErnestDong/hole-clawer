@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "hole"
-version = "0.1.0"
+version = "0.1.1"
 description = ""
 authors = ["Ernest DONG <dongcy2000@outlook.com>"]
 
@@ -8,6 +8,7 @@ authors = ["Ernest DONG <dongcy2000@outlook.com>"]
 python = "^3.10"
 pandas = "^1.4.1"
 requests = "^2.27.1"
+SQLAlchemy = "^1.4.31"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
