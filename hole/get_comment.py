@@ -9,8 +9,8 @@ logger = logging.getLogger(__name__)
 
 
 class GetComment(GetList):
-    def __init__(self, user_token, json):
-        super().__init__(user_token=user_token)
+    def __init__(self, user_token, json, session: requests.Session):
+        super().__init__(user_token=user_token, session=session)
         self.base_url = "https://pkuhelper.pku.edu.cn/services/pkuhole/api.php?"
         self.params["action"] = "getcomment"
         self.json = json
@@ -27,11 +27,3 @@ class GetComment(GetList):
 
     def _get_data(self, p_key, p_val):
         return super()._get_data(p_key, p_val, logger=logger)
-
-
-if __name__ == "__main__":
-    hole_list = GetList()
-    data = hole_list._get_data()
-    comments = GetComment(json=data)
-    data = comments.get_data()
-    # logger.info(data)
