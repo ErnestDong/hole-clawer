@@ -47,15 +47,10 @@ class GetList:
             self.__verify(json_data)
         except AssertionError:
             logger.warning("need verify")
-            header = {
-                "user-agent": self.header["user-agent"],
-                "referer": "https://www.google.com/",
-            }
-            r = self.session.get(
-                "http://webcache.googleusercontent.com/search?q=cache:www.naukri.com/jobs-in-andhra-pradesh",
-                headers=header,
-            )
-            assert r.status_code == 200
+            cookies = self.session.cookies.get_dict()
+            from hole.error_detact import check
+
+            check(cookies)
             json_data = self.__get()
             self.__verify(json_data)
         data = json_data["data"]
